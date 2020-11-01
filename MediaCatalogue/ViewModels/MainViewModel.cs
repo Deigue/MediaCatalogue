@@ -13,14 +13,7 @@ namespace MediaCatalogue.ViewModels
 {
     class MainViewModel : ReactiveObject
     {
-        public MainViewModel()
-        {
-            ClearPath = ReactiveCommand.Create(() => { Path = string.Empty; });
-            //Path = ReactiveProep
-
-           
-        }
-
+        public IObservable<MenuItemViewModel> MenuItems { get; }
         public ReactiveCommand<Unit, Unit> ClearPath { get; }
 
         private string path = string.Empty;
@@ -29,5 +22,22 @@ namespace MediaCatalogue.ViewModels
             get => path;
             set => this.RaiseAndSetIfChanged(ref path, value);
         }
+
+        public MainViewModel()
+        {
+            ClearPath = ReactiveCommand.Create(() => { Path = string.Empty; });
+            //Path = ReactiveProep
+            //SQLiteConnection connection;
+
+            var fileMenu = new MenuItemViewModel
+            {
+                Header = "File"
+            };
+
+            //MenuItems = fileMenu.ob
+
+        }
+
+        
     }
 }
