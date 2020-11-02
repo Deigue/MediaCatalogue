@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MediaCatalogue.ViewModels
 {
-    class MenuItemViewModel : ReactiveObject
+    public class MenuItemViewModel : ReactiveObject
     {
         [Reactive]
         public string Header { get; set; }

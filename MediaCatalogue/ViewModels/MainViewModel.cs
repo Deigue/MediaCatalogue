@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace MediaCatalogue.ViewModels
 {
-    class MainViewModel : ReactiveObject
+    public class MainViewModel : ReactiveObject
     {
         public IObservable<MenuItemViewModel> MenuItems { get; }
         public ReactiveCommand<Unit, Unit> ClearPath { get; }

@@ -6,6 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:rxui="http://reactiveui.net"
     xmlns:local="clr-namespace:MediaCatalogue.Views"
+    xmlns:vms="clr-namespace:MediaCatalogue.ViewModels"
     mc:Ignorable="d">
     <Grid>
         <Menu x:Name="mainMenu" Grid.Row="0" Height="20" IsMainMenu="True" DockPanel.Dock="Top" ItemsSource="{Binding MenuItems}">

@@ -1,22 +1,11 @@
-﻿using MediaCatalogue.ViewModels;
+﻿using MediaCatalogue.Components;
+using MediaCatalogue.ViewModels;
 using ReactiveUI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace MediaCatalogue.Views
 {
-    internal class MenuViewBase : ReactiveUserControl<MainViewModel> { };
+    public class MenuViewBase : RxUserControl<MainViewModel> { };
+
     /// <summary>
     /// Interaction logic for MenuView.xaml
     /// </summary>
@@ -25,6 +14,10 @@ namespace MediaCatalogue.Views
         public MenuView()
         {
             InitializeComponent();
+            this.WhenActivated(d =>
+            {
+                //this.WhenAnyValue(x => x.Con)
+            });
         }
     }
 }
