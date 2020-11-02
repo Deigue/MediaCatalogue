@@ -1,4 +1,5 @@
 ﻿using ReactiveUI;
+using ReactiveUI.Fody.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,17 +10,12 @@ namespace MediaCatalogue.ViewModels
 {
     class MenuItemViewModel : ReactiveObject
     {
-        private string _header;
-        public string Header
-        {
-            get { return _header; }
-            set { _header = value; }
-        }
+        [Reactive]
+        public string Header { get; set; }
 
         public MenuItemViewModel()
         {
-            // initialize complex obj like collection/refs etc.
-
+            IObservable<string> headerObservable = this.WhenAnyValue(x => x.Header);
         }
     }
 }

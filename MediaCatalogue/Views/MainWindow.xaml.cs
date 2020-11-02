@@ -1,5 +1,6 @@
 ﻿using ControlzEx.Theming;
 using MahApps.Metro.Controls;
+using MediaCatalogue.ViewModels;
 
 namespace MediaCatalogue.Views
 {
@@ -16,6 +17,9 @@ namespace MediaCatalogue.Views
             // Use for changing theme in settings later.
             ThemeManager.Current.ChangeTheme(this, "Dark.Crimson");
             //GlowBrush.se = "Green";
+
+            var mainViewModel = new MainViewModel();
+
         }
     }
 }

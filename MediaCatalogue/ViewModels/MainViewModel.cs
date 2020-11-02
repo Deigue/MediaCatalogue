@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reactive;
+using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -34,7 +35,8 @@ namespace MediaCatalogue.ViewModels
                 Header = "File"
             };
 
-            //MenuItems = fileMenu.ob
+
+            //MenuItems = Observable.Create<MenuItemViewModel>()
 
         }
 

@@ -19,13 +19,8 @@
             <RowDefinition Height="Auto"/>
             <!--RowDefinition Height="*"/-->
         </Grid.RowDefinitions>
-        <Menu x:Name="mainMenu" Grid.Row="0" Height="20" IsMainMenu="True" >
-            <Menu.ItemContainerStyle>
-                <Style TargetType="MenuItem">
-                    <Setter Property="Header" Value="{Binding Header}" />
-                </Style>
-            </Menu.ItemContainerStyle>
-        </Menu>
+        <local:MenuView/>
+        
         <!--Grid x:Name="panel" Grid.Row="1" Background="LightSlateGray"/-->
     </Grid>
 </mah:MetroWindow>
