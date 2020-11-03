@@ -14,9 +14,10 @@
     MinWidth="495"
     MinHeight="375"
     SaveWindowPosition="True"
-    GlowBrush="Red">
-    <Grid x:Name="rootGrid" Background="Gray">
+    GlowBrush="Red"
+    NonActiveGlowBrush="DarkSlateBlue">
 
+    <Grid x:Name="rootGrid">
         <ContentPresenter Content="{Binding ActivePane}">
             <ContentPresenter.Resources>
                 <DataTemplate DataType="{x:Type vm:MediaDataViewModel}">
@@ -25,7 +26,5 @@
                 <!--DataTemplate DataType="{x:Type vm:Settin}-->
             </ContentPresenter.Resources>
         </ContentPresenter>
-        
-        
     </Grid>
 </mah:MetroWindow>

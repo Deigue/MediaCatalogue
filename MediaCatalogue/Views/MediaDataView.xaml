@@ -9,14 +9,30 @@
     <Grid>
         <DockPanel>
             <Menu DockPanel.Dock="Top" ItemsSource="{Binding MenuItems}" Background="Black" IsMainMenu="True">
+                <Menu.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Grid HorizontalAlignment="Center"/>
+                    </ItemsPanelTemplate>
+                </Menu.ItemsPanel>
                 <Menu.ItemContainerStyle>
                     <Style TargetType="MenuItem">
-                        <Setter Property="Header" Value="{Binding Header}"/>
+                        <Setter Property="Header" Value="{Binding Header}" />
+                        <Setter Property="MinWidth" Value="50" />
+                        <Setter Property="HorizontalAlignment" Value="Center" />
                     </Style>
                 </Menu.ItemContainerStyle>
             </Menu>
-            <Grid>
-                <TextBlock Text="Media Data View Grid" />
+            <Grid Margin="5,10,10,5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Name="dbPathLabel" Grid.Row="0" Grid.Column="0">Database Path</Label>
+                <TextBox IsReadOnly="{Binding PathIsReadOnly}" Grid.Row="0" Grid.Column="1" />
             </Grid>
         </DockPanel>
     </Grid>
