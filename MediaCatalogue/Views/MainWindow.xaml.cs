@@ -18,7 +18,7 @@ namespace MediaCatalogue.Views
             ThemeManager.Current.ChangeTheme(this, "Dark.Crimson");
             //GlowBrush.se = "Green";
 
-            var mainViewModel = new MainViewModel();
+            var mainViewModel = new MainViewModel(this);
 
         }
     }

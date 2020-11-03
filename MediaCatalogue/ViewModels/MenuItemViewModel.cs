@@ -1,4 +1,5 @@
-﻿using ReactiveUI;
+﻿using MediaCatalogue.Components;
+using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System;
 using System.Collections.Generic;
@@ -8,14 +9,16 @@ using System.Threading.Tasks;
 
 namespace MediaCatalogue.ViewModels
 {
-    public class MenuItemViewModel : ReactiveObject
+    public class MenuItemViewModel : ViewModel
     {
         [Reactive]
         public string Header { get; set; }
 
-        public MenuItemViewModel()
+        public MenuItemViewModel(string header)
         {
+            Header = header;
             IObservable<string> headerObservable = this.WhenAnyValue(x => x.Header);
+            //headerObservable.Subscribe()
         }
     }
 }

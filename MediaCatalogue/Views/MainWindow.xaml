@@ -6,6 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
     xmlns:local="clr-namespace:MediaCatalogue.Views"
+    xmlns:vm="clr-namespace:MediaCatalogue.ViewModels"
     mc:Ignorable="d"
     Title="Media Catalogue"
     Height="450"
@@ -15,12 +16,16 @@
     SaveWindowPosition="True"
     GlowBrush="Red">
     <Grid x:Name="rootGrid" Background="Gray">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <!--RowDefinition Height="*"/-->
-        </Grid.RowDefinitions>
-        <local:MenuView/>
+
+        <ContentPresenter>
+            <ContentPresenter.Resources>
+                <DataTemplate DataType="{x:Type vm:MediaDataViewModel}">
+                    <local:MediaDataView/>
+                </DataTemplate>
+                <!--DataTemplate DataType="{x:Type vm:Settin}-->
+            </ContentPresenter.Resources>
+        </ContentPresenter>
         
-        <!--Grid x:Name="panel" Grid.Row="1" Background="LightSlateGray"/-->
+        
     </Grid>
 </mah:MetroWindow>
