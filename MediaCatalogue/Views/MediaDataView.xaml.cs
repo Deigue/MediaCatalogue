@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MediaCatalogue.ViewModels;
+using ReactiveUI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,14 +17,16 @@ using System.Windows.Shapes;
 
 namespace MediaCatalogue.Views
 {
+    public class MediaDataViewBase : ReactiveUserControl<MediaDataViewModel> { };
     /// <summary>
     /// Interaction logic for MediaDataView.xaml
     /// </summary>
-    public partial class MediaDataView : UserControl
+    public partial class MediaDataView : MediaDataViewBase
     {
         public MediaDataView()
         {
             InitializeComponent();
+            
         }
     }
 }

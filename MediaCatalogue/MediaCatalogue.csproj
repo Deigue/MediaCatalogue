@@ -118,8 +118,16 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Components\RxUserControl.cs" />
+    <Compile Include="Components\ViewModel.cs" />
+    <Compile Include="ViewModels\MediaDataViewModel.cs" />
+    <Compile Include="Views\MediaDataView.xaml.cs">
+      <DependentUpon>MediaDataView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MenuView.xaml.cs">
       <DependentUpon>MenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SettingsView.xaml.cs">
+      <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -135,7 +143,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\MediaDataView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

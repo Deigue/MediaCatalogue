@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MediaCatalogue.ViewModels
 {
-    class MediaDataViewModel : ViewModel
+    public class MediaDataViewModel : ViewModel
     {
         public MainViewModel MainViewModel { get; }
         public ObservableCollection<MenuItemViewModel> MenuItems { get; }

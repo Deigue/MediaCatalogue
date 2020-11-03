@@ -39,16 +39,6 @@ namespace MediaCatalogue.ViewModels
 
         }
 
-        private ObservableCollection<MenuItemViewModel> SetupMenuItems()
-        {
-            var menuItems = new ObservableCollection<MenuItemViewModel>();
-            var fileMenu = new MenuItemViewModel("_File");
-
-            menuItems.Add(fileMenu);
-            return menuItems;
-
-        }
-
         public void NavigateToPane(ViewModel viewModel)
         {
             ActivePane = viewModel;

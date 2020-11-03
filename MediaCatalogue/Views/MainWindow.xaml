@@ -17,7 +17,7 @@
     GlowBrush="Red">
     <Grid x:Name="rootGrid" Background="Gray">
 
-        <ContentPresenter>
+        <ContentPresenter Content="{Binding ActivePane}">
             <ContentPresenter.Resources>
                 <DataTemplate DataType="{x:Type vm:MediaDataViewModel}">
                     <local:MediaDataView/>

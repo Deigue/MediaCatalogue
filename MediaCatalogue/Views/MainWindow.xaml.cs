@@ -19,7 +19,7 @@ namespace MediaCatalogue.Views
             //GlowBrush.se = "Green";
 
             var mainViewModel = new MainViewModel(this);
-
+            DataContext = mainViewModel;
         }
     }
 }
