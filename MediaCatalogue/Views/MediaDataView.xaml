@@ -19,6 +19,7 @@
                     </Style>
                 </Menu.ItemContainerStyle>
             </Menu>
+            <local:MenuView DockPanel.Dock="Top"/>
             <Grid Margin="5,10,10,5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>

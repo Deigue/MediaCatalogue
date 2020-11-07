@@ -1,6 +1,7 @@
 ﻿using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using MediaCatalogue.Components;
+using Microsoft.WindowsAPICodePack.Dialogs;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System;
@@ -20,6 +21,9 @@ namespace MediaCatalogue.ViewModels
         public ObservableCollection<MenuItemViewModel> MenuItems { get; }
 
         [Reactive]
+        public MenuViewModel MainMenu { get; set; }
+
+        [Reactive]
         public bool PathIsReadOnly { get; set; }
 
         public MediaDataViewModel(MainViewModel mainVM)
@@ -27,6 +31,7 @@ namespace MediaCatalogue.ViewModels
             MainViewModel = mainVM;
             MenuItems = SetupMenuItems();
             PathIsReadOnly = true;
+            MainMenu = new MenuViewModel(this);
 
         }
 
@@ -34,15 +39,22 @@ namespace MediaCatalogue.ViewModels
         {
             var menuItems = new ObservableCollection<MenuItemViewModel>();
 
-            ReactiveCommand<Unit, MessageDialogResult> newFile = ReactiveCommand.CreateFromTask<MessageDialogResult>(
-                () =>
-                {
-                    return Application.Current.Windows.OfType<MetroWindow>().First(w => w.IsActive).ShowMessageAsync("New file", "make new file?",
-                       MessageDialogStyle.AffirmativeAndNegative);
-                });
+            /*
+            ReactiveCommand<Unit, MessageDialogResult> newFile = ReactiveCommand.CreateFromTask<MessageDialogResult>(() =>
+            {
+                return Application.Current.Windows.OfType<MetroWindow>().First(w => w.IsActive).ShowMessageAsync("New file", "make new file?",
+                    MessageDialogStyle.AffirmativeAndNegative);
+            });
+            */
 
 
-            var fileMenu = new MenuItemViewModel("_File",newFile);
+            var newFile = ReactiveCommand.Create(() =>
+            {
+                var saveDialog = new CommonSaveFileDialog();
+                saveDialog.ShowDialog();
+            });
+            
+            var fileMenu = new MenuItemViewModel("_File", newFile);
             menuItems.Add(fileMenu);
 
             return menuItems;
