@@ -17,14 +17,7 @@
     GlowBrush="Red"
     NonActiveGlowBrush="DarkSlateBlue">
 
-    <Grid x:Name="rootGrid">
-        <ContentPresenter Content="{Binding ActivePane}">
-            <ContentPresenter.Resources>
-                <DataTemplate DataType="{x:Type vm:MediaDataViewModel}">
-                    <local:MediaDataView/>
-                </DataTemplate>
-                <!--DataTemplate DataType="{x:Type vm:Settin}-->
-            </ContentPresenter.Resources>
-        </ContentPresenter>
+    <Grid>
+        <local:MainView />
     </Grid>
 </mah:MetroWindow>
