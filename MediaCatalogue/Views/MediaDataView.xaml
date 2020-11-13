@@ -8,17 +8,6 @@
     mc:Ignorable="d">
     <Grid>
         <DockPanel>
-            <Menu DockPanel.Dock="Top" ItemsSource="{Binding MenuItems}" Background="Black" IsMainMenu="True">
-                
-                <Menu.ItemContainerStyle>
-                    <Style TargetType="MenuItem">
-                        <Setter Property="Header" Value="{Binding Header}" />
-                        <Setter Property="MinWidth" Value="50" />
-                        <Setter Property="HorizontalAlignment" Value="Center" />
-                        <Setter Property="Command" Value="{Binding ClickCommand}" />
-                    </Style>
-                </Menu.ItemContainerStyle>
-            </Menu>
             <local:MenuView DockPanel.Dock="Top"/>
             <Grid Margin="5,10,10,5">
                 <Grid.RowDefinitions>

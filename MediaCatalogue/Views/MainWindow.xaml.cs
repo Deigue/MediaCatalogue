@@ -20,7 +20,6 @@ namespace MediaCatalogue.Views
 
             var mainViewModel = new MainViewModel(this);
             DataContext = mainViewModel;
-
         }
     }
 }

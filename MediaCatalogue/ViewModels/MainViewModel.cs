@@ -39,10 +39,6 @@ namespace MediaCatalogue.ViewModels
 
         }
 
-        public MainViewModel()
-        {
-        }
-
         public void NavigateToPane(ViewModel viewModel)
         {
             ActivePane = viewModel;
