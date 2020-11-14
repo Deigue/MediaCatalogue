@@ -5,22 +5,39 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:local="clr-namespace:MediaCatalogue.Views"
+    xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
     mc:Ignorable="d">
     <Grid>
         <DockPanel>
             <local:MenuView DockPanel.Dock="Top"/>
-            <Grid Margin="5,10,10,5">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    
-                </Grid.RowDefinitions>
+            <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="48" />
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Label Name="dbPathLabel" Grid.Row="0" Grid.Column="0">Database Path</Label>
-                <TextBox Name="dbPath" IsReadOnly="{Binding PathIsReadOnly}" Grid.Row="0" Grid.Column="1" />
+                <mah:HamburgerMenu
+                    Grid.Column="0"
+                    x:Name="MediaHamburger"
+                    DisplayMode="CompactInline"
+                    IsPaneOpen="False"
+                    SelectedIndex="1"
+                    CanResizeOpenPane="False"
+                    CompactPaneLength="48">
+                </mah:HamburgerMenu>
+                <Grid Margin="5,10,10,5" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Name="dbPathLabel" Grid.Row="0" Grid.Column="0">Database Path</Label>
+                    <TextBox Name="dbPath" IsReadOnly="{Binding PathIsReadOnly}" Grid.Row="0" Grid.Column="1" />
+                </Grid>
             </Grid>
+            
+            
         </DockPanel>
     </Grid>
 </local:MediaDataViewBase>
