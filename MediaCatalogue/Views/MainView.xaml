@@ -9,7 +9,7 @@
     mc:Ignorable="d" 
     d:DesignHeight="450"
     d:DesignWidth="800">
-    <Grid x:Name="rootGrid">
+    <Grid x:Name="RootGrid">
         <ContentPresenter Name="ContentPane" Content="{Binding ActivePane}">
             <ContentPresenter.Resources>
                 <DataTemplate DataType="{x:Type vm:MediaDataViewModel}">
