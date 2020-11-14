@@ -8,7 +8,8 @@
     xmlns:vm="clr-namespace:MediaCatalogue.ViewModels"
     mc:Ignorable="d" 
     d:DesignHeight="450"
-    d:DesignWidth="800">
+    d:DesignWidth="800"
+    d:DataContext="{d:DesignInstance vm:MainViewModel}">
     <Grid x:Name="RootGrid">
         <ContentPresenter Name="ContentPane" Content="{Binding ActivePane}">
             <ContentPresenter.Resources>
