@@ -9,7 +9,7 @@ namespace MediaCatalogue.Views
     /// <summary>
     /// Interaction logic for MainView.xaml
     /// </summary>
-    public partial class MainView : MainViewBase
+    public partial class MainView
     {
         public MainView()
         {

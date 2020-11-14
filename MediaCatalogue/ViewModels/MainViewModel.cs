@@ -2,7 +2,6 @@
 using MediaCatalogue.Views;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
-using System.Collections.ObjectModel;
 using System.Reactive;
 
 namespace MediaCatalogue.ViewModels
