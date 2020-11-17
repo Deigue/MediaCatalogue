@@ -4,7 +4,9 @@ using System.Reactive.Linq;
 
 namespace MediaCatalogue.Views
 {
-    public class MainViewBase : ReactiveUserControl<MainViewModel> { };
+    public class MainViewBase : ReactiveUserControl<MainViewModel>
+    {
+    };
 
     /// <summary>
     /// Interaction logic for MainView.xaml

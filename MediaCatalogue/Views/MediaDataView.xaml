@@ -7,11 +7,11 @@
     xmlns:local="clr-namespace:MediaCatalogue.Views"
     xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
     xmlns:vm="clr-namespace:MediaCatalogue.ViewModels"
-    mc:Ignorable="d" d:DataContext="{d:DesignInstance vm:MediaDataViewModel}">
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance vm:MediaDataViewModel}">
     <Grid>
         <DockPanel>
             <local:MenuView DockPanel.Dock="Top" />
-
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="48" />
@@ -33,12 +33,12 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Label Name="LabelDbPath" Grid.Row="0" Grid.Column="0">Used Database Path</Label>
-                    <TextBox Name="TextDbPath" IsReadOnly="{Binding PathIsReadOnly}" Grid.Row="0" Grid.Column="1" />
+                    <Label Name="LabelDbPath" Grid.Row="0" Grid.Column="0">Path</Label>
+                    <TextBox Name="TextDbPath" Grid.Row="0" Grid.Column="1"
+                             IsReadOnly="{Binding PathReadOnly}"
+                             mah:TextBoxHelper.Watermark="File path of the media database" />
                 </Grid>
             </Grid>
-
-
         </DockPanel>
     </Grid>
 </local:MediaDataViewBase>

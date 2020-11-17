@@ -1,5 +1,6 @@
 ﻿using MediaCatalogue.Components;
 using System.Collections.ObjectModel;
+using System.Windows.Controls;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using ReactiveUI;
 
@@ -13,6 +14,7 @@ namespace MediaCatalogue.ViewModels
         public MenuViewModel(ViewModel parent)
         {
             Parent = parent;
+            MenuItems = SetupMenuItems();
         }
 
         private ObservableCollection<MenuItemViewModel> SetupMenuItems()
