@@ -8,7 +8,11 @@
     xmlns:vm="clr-namespace:MediaCatalogue.ViewModels"
     mc:Ignorable="d"
     d:DataContext="{d:DesignInstance vm:MenuViewModel}">
-    <Menu DockPanel.Dock="Top" ItemsSource="{Binding MenuItems}" Background="Black" IsMainMenu="True">
+    <Menu Name="MediaMenu"
+          DockPanel.Dock="Top"
+          ItemsSource="{Binding MenuItems}"
+          Background="Black"
+          IsMainMenu="True">
         <Menu.ItemContainerStyle>
             <Style TargetType="MenuItem">
                 <Setter Property="Header" Value="{Binding Header}" />

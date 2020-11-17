@@ -27,6 +27,10 @@ namespace MediaCatalogue.Views
         public MenuView()
         {
             InitializeComponent();
+            this.WhenActivated(disposable =>
+            {
+                // map menu stuff here.
+            });
         }
     }
 }
