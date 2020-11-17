@@ -18,13 +18,10 @@ namespace MediaCatalogue.ViewModels
     public class MediaDataViewModel : ViewModel
     {
         public MainViewModel MainViewModel { get; }
+        [Reactive] public MenuViewModel MainMenu { get; set; }
         public ObservableCollection<MenuItemViewModel> MenuItems { get; }
 
-        [Reactive]
-        public MenuViewModel MainMenu { get; set; }
-
-        [Reactive]
-        public bool PathIsReadOnly { get; set; }
+        [Reactive] public bool PathIsReadOnly { get; set; }
 
         public MediaDataViewModel(MainViewModel mainVM)
         {
@@ -32,7 +29,6 @@ namespace MediaCatalogue.ViewModels
             MenuItems = SetupMenuItems();
             PathIsReadOnly = true;
             MainMenu = new MenuViewModel(this);
-
         }
 
         private ObservableCollection<MenuItemViewModel> SetupMenuItems()
@@ -53,7 +49,7 @@ namespace MediaCatalogue.ViewModels
                 var saveDialog = new CommonSaveFileDialog();
                 saveDialog.ShowDialog();
             });
-            
+
             var fileMenu = new MenuItemViewModel("_File", newFile);
             menuItems.Add(fileMenu);
 
@@ -61,4 +57,3 @@ namespace MediaCatalogue.ViewModels
         }
     }
 }
-

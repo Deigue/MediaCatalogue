@@ -33,7 +33,7 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Label Name="LabelDbPath" Grid.Row="0" Grid.Column="0">Database Path</Label>
+                    <Label Name="LabelDbPath" Grid.Row="0" Grid.Column="0">Used Database Path</Label>
                     <TextBox Name="TextDbPath" IsReadOnly="{Binding PathIsReadOnly}" Grid.Row="0" Grid.Column="1" />
                 </Grid>
             </Grid>
