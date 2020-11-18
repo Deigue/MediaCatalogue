@@ -1,10 +1,11 @@
 ﻿using MediaCatalogue.ViewModels;
 using ReactiveUI;
 using System.Reactive.Linq;
+using MediaCatalogue.Components;
 
 namespace MediaCatalogue.Views
 {
-    public class MainViewBase : ReactiveUserControl<MainViewModel>
+    public class MainViewBase : RxUserControl<MainViewModel>
     {
     };
 

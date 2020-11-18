@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 
 namespace MediaCatalogue.Views
 {
+    //todo Implement this view and corresponding VM.
     /// <summary>
     /// Interaction logic for SettingsView.xaml
     /// </summary>

@@ -1,10 +1,11 @@
 ﻿using System.Reactive.Disposables;
+using MediaCatalogue.Components;
 using MediaCatalogue.ViewModels;
 using ReactiveUI;
 
 namespace MediaCatalogue.Views
 {
-    public class MediaDataViewBase : ReactiveUserControl<MediaDataViewModel>
+    public class MediaDataViewBase : RxUserControl<MediaDataViewModel>
     {
     };
 

@@ -14,10 +14,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MediaCatalogue.Components;
 
 namespace MediaCatalogue.Views
 {
-    public class MenuViewBase : ReactiveUserControl<MenuViewModel> { };
+    public class MenuViewBase : RxUserControl<MenuViewModel> { };
 
     /// <summary>
     /// Interaction logic for MenuView.xaml
