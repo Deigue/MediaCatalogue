@@ -16,7 +16,7 @@ namespace MediaCatalogue.Views
             this.WhenActivated(disposable =>
             {
                 // Active pane switching.
-                this.WhenAnyValue(view => view.ViewModel!.ActivePane)
+                this.WhenAnyValue(view => view.ViewModel.ActivePane)
                     .ObserveOn(RxApp.MainThreadScheduler)
                     .BindTo(this, view => view.ContentPane.Content);
             });

@@ -1,21 +1,15 @@
-﻿using MediaCatalogue.Components;
+﻿using System.Windows.Input;
+using MediaCatalogue.Components;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using ReactiveUI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
-namespace MediaCatalogue.ViewModels
+namespace MediaCatalogue.ViewModels.Common
 {
     // To be replacing as util VM for all places where file picker needs to be utilized.
-    class FilePickerViewModel : ViewModel
+    public class FilePickerViewModel : ViewModel
     {
         public FilePickerViewModel()
         {
-            
         }
 
         public ICommand ShowOpenFileDialog()
@@ -25,6 +19,5 @@ namespace MediaCatalogue.ViewModels
                 CommonFileDialog openFileDialog = new CommonOpenFileDialog();
             });
         }
-
     }
 }

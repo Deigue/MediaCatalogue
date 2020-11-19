@@ -8,12 +8,11 @@ namespace MediaCatalogue.ViewModels
     {
         private MainViewModel MainViewModel { get; }
 
-        [Reactive] public MenuViewModel MainMenu { get; }
+        [Reactive] public MenuViewModel MainMenu { get; set; }
 
         [Reactive] public bool PathReadOnly { get; set; } = true;
 
-        [Reactive]
-        public String Path { get; set; }
+        [Reactive] public string Path { get; set; }
 
         public MediaDataViewModel(MainViewModel mainViewModel)
         {

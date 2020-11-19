@@ -127,7 +127,7 @@
     </ApplicationDefinition>
     <Compile Include="Components\RxUserControl.cs" />
     <Compile Include="Components\ViewModel.cs" />
-    <Compile Include="ViewModels\FilePickerViewModel.cs" />
+    <Compile Include="ViewModels\Common\FilePickerViewModel.cs" />
     <Compile Include="ViewModels\MediaDataViewModel.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="Views\MainView.xaml.cs">
