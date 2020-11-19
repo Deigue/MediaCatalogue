@@ -1,4 +1,4 @@
-﻿<local:MainViewBase
+﻿<components:RxUserControl
     x:Class="MediaCatalogue.Views.MainView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -6,17 +6,19 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:local="clr-namespace:MediaCatalogue.Views"
     xmlns:vm="clr-namespace:MediaCatalogue.ViewModels"
+    xmlns:components="clr-namespace:MediaCatalogue.Components"
     mc:Ignorable="d" 
     d:DesignHeight="450"
     d:DesignWidth="800"
+    x:TypeArguments="vm:MainViewModel"
     d:DataContext="{d:DesignInstance vm:MainViewModel}">
     <Grid x:Name="RootGrid">
-        <ContentPresenter Name="ContentPane" Content="{Binding ActivePane}">
+        <ContentPresenter Name="ContentPane">
             <ContentPresenter.Resources>
                 <DataTemplate DataType="{x:Type vm:MediaDataViewModel}">
-                    <local:MediaDataView/>
+                    <local:MediaDataView ViewModel="{Binding}"/>
                 </DataTemplate>
             </ContentPresenter.Resources>
         </ContentPresenter>
     </Grid>
-</local:MainViewBase>
+</components:RxUserControl>

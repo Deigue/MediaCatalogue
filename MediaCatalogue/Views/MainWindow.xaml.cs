@@ -1,4 +1,5 @@
-﻿using ControlzEx.Theming;
+﻿using System.Windows.Media;
+using ControlzEx.Theming;
 using MediaCatalogue.ViewModels;
 
 namespace MediaCatalogue.Views
@@ -11,11 +12,12 @@ namespace MediaCatalogue.Views
         public MainWindow()
         {
             InitializeComponent();
-            
+
             // Use for changing theme in settings later.
             ThemeManager.Current.ChangeTheme(this, "Dark.Crimson");
-            //GlowBrush.se = "Green";
+            GlowBrush = new SolidColorBrush(Colors.Red);
 
+            // Set the main DataContext.
             var mainViewModel = new MainViewModel(this);
             DataContext = mainViewModel;
         }

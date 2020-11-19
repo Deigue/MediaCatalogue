@@ -6,6 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mahapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
     xmlns:local="clr-namespace:MediaCatalogue.Views"
+    xmlns:vm="clr-namespace:MediaCatalogue.ViewModels"
     mc:Ignorable="d"
     Title="Media Catalogue"
     TitleAlignment="Left"
@@ -20,8 +21,9 @@
     UseLayoutRounding="True"
     WindowTitleBrush="DarkRed"
     GlowBrush="Red"
-    NonActiveGlowBrush="DarkSlateBlue">
+    NonActiveGlowBrush="DarkSlateBlue"
+    d:DataContext="{d:DesignInstance {x:Type vm:MainViewModel}}">
     <Grid>
-        <local:MainView />
+        <local:MainView ViewModel="{Binding}" />
     </Grid>
 </mahapps:MetroWindow>

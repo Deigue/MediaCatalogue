@@ -5,20 +5,17 @@ using MediaCatalogue.Components;
 
 namespace MediaCatalogue.Views
 {
-    public class MainViewBase : RxUserControl<MainViewModel>
-    {
-    };
-
     /// <summary>
     /// Interaction logic for MainView.xaml
     /// </summary>
-    public partial class MainView
+    public partial class MainView : RxUserControl<MainViewModel>
     {
         public MainView()
         {
             InitializeComponent();
             this.WhenActivated(disposable =>
             {
+                // Active pane switching.
                 this.WhenAnyValue(view => view.ViewModel!.ActivePane)
                     .ObserveOn(RxApp.MainThreadScheduler)
                     .BindTo(this, view => view.ContentPane.Content);
