@@ -14,6 +14,8 @@ namespace MediaCatalogue.ViewModels
         public MenuViewModel(ViewModel parent)
         {
             Parent = parent;
+            
+            // TODO: Link MenuItemModel to this ViewModel, and leverage those observable properties directly.
             MenuItems = SetupMenuItems();
         }
 
