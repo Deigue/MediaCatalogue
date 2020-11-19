@@ -14,9 +14,12 @@ namespace MediaCatalogue.ViewModels
 
         [Reactive] public string Path { get; set; }
 
-        public MediaDataViewModel(MainViewModel mainViewModel)
+        public MediaDataViewModel(MainViewModel mainViewModel, string path)
         {
             MainViewModel = mainViewModel;
+            // TODO: Have this populate some default path using an externally saved configuration file.
+            // TODO: SQLiteConnection connection based on this path. Will populate rest of potential information here.
+            Path = path;
             MainMenu = new MenuViewModel(this);
         }
     }

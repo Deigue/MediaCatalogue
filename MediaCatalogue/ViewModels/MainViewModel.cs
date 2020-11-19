@@ -8,15 +8,16 @@ namespace MediaCatalogue.ViewModels
     {
         public MainWindow MainWindow { get; }
 
-        [Reactive] public ViewModel ActivePane { get; private set; }
+        [Reactive] public ViewModel? ActivePane { get; private set; }
 
         public MainViewModel(MainWindow mainWindow)
         {
             MainWindow = mainWindow;
 
-            // TODO: SQLiteConnection connection from default configuration.
 
-            var mediaDataViewModel = new MediaDataViewModel(this);
+            // TODO: Establish SQLite Database path from preset/default configuration and send it down to MediaDataViewModel.
+            // Sending random empty path for now ...
+            var mediaDataViewModel = new MediaDataViewModel(this, "<empty>");
             NavigateToPane(mediaDataViewModel);
         }
 

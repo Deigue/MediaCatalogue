@@ -18,7 +18,7 @@ namespace MediaCatalogue.Views
             this.WhenActivated(disposable =>
             {
                 // Setup the Main Menu.
-                this.WhenAnyValue(view => view.ViewModel.MainMenu)
+                this.WhenAnyValue(view => view.ViewModel!.MainMenu)
                     .ObserveOn(RxApp.MainThreadScheduler)
                     .BindTo(this, view => view.MainMenu.DataContext)
                     .DisposeWith(disposable);
