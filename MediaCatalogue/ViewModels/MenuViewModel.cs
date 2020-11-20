@@ -1,6 +1,5 @@
 ﻿using MediaCatalogue.Components;
 using System.Collections.ObjectModel;
-using System.Windows.Controls;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using ReactiveUI;
 

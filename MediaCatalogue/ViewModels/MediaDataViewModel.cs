@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Web.UI.WebControls;
 using MediaCatalogue.Components;
+using Microsoft.WindowsAPICodePack.Shell.PropertySystem;
 using ReactiveUI.Fody.Helpers;
 
 namespace MediaCatalogue.ViewModels
@@ -21,6 +23,7 @@ namespace MediaCatalogue.ViewModels
             // TODO: SQLiteConnection connection based on this path. Will populate rest of potential information here.
             Path = path;
             MainMenu = new MenuViewModel(this);
-        }
+
+        } 
     }
 }
