@@ -6,10 +6,14 @@ using ReactiveUI;
 
 namespace MediaCatalogue.Views
 {
+    public class MediaDataViewBase : RxUserControl<MediaDataViewModel>
+    {
+    }
+
     /// <summary>
     /// Interaction logic for MediaDataView.xaml
     /// </summary>
-    public partial class MediaDataView : RxUserControl<MediaDataViewModel>
+    public partial class MediaDataView : MediaDataViewBase
     {
         public MediaDataView()
         {

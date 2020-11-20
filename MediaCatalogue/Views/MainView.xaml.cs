@@ -5,10 +5,14 @@ using MediaCatalogue.Components;
 
 namespace MediaCatalogue.Views
 {
+    public class MainViewBase : RxUserControl<MainViewModel>
+    {
+    }
+
     /// <summary>
     /// Interaction logic for MainView.xaml
     /// </summary>
-    public partial class MainView : RxUserControl<MainViewModel>
+    public partial class MainView : MainViewBase
     {
         public MainView()
         {
