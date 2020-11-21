@@ -37,8 +37,9 @@ namespace MediaCatalogue.ViewModels
                 saveDialog.ShowDialog();
             });
 
-            var fileMenu = new MenuItemViewModel("_File", newFile);
+            var fileMenu = new MenuItemViewModel("_File", newFile, null);
             menuItems.Add(fileMenu);
+            menuItems.Add(new MenuItemViewModel("_Settings",newFile, new ObservableCollection<MenuItemViewModel>(){fileMenu}));
 
             return menuItems;
         }

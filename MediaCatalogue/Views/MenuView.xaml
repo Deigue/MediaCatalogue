@@ -1,4 +1,4 @@
-﻿<local:MenuViewBase
+<local:MenuViewBase
     x:Class="MediaCatalogue.Views.MenuView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -18,12 +18,21 @@
         <!--         <local:LoginItemView ViewModel="{Binding}" /> -->
         <!--     </DataTemplate> -->
         <!-- </ItemsControl.ItemTemplate> -->
+        <Menu.ItemTemplate>
+            <HierarchicalDataTemplate 
+                DataType="vm:MenuItemViewModel" 
+                ItemContainerStyle="{StaticResource MahApps.Styles.MenuItem}"
+                ItemsSource="{Binding Children}">
+                <ContentPresenter Content="{Binding Header}" RecognizesAccessKey="True"/>
+                
+            </HierarchicalDataTemplate>
+        </Menu.ItemTemplate>
         <Menu.ItemContainerStyle>
             <Style TargetType="MenuItem">
-                <Setter Property="Header" Value="{Binding Header}" />
+                <!-- <Setter Property="Header" Value="{Binding Header}" /> -->
                 <Setter Property="MinWidth" Value="50" />
                 <Setter Property="HorizontalAlignment" Value="Center" />
-                <Setter Property="Command" Value="{Binding ClickCommand}" />
+                <!-- <Setter Property="Command" Value="{Binding ClickCommand}" /> -->
             </Style>
         </Menu.ItemContainerStyle>
     </Menu>

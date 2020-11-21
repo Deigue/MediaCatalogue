@@ -3,6 +3,7 @@ using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,12 +18,18 @@ namespace MediaCatalogue.ViewModels
 
         public ICommand ClickCommand { get; }
 
-        public MenuItemViewModel(string header, ICommand clickCommand)
+        public ObservableCollection<MenuItemViewModel>? Children { get; set; }
+
+        public MenuItemViewModel(string header, ICommand clickCommand, ObservableCollection<MenuItemViewModel>? childs)
         {
             Header = header;
             ClickCommand = clickCommand;
             //IObservable<string> headerObservable = this.WhenAnyValue(x => x.Header);
             //headerObservable.Subscribe()
+            
+            Children = childs ?? new ObservableCollection<MenuItemViewModel>();
+
+
         }
     }
 }
