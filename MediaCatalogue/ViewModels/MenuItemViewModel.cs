@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace MediaCatalogue.ViewModels
 {
@@ -20,10 +21,13 @@ namespace MediaCatalogue.ViewModels
 
         public ObservableCollection<MenuItemViewModel>? Children { get; set; }
 
-        public MenuItemViewModel(string header, ICommand clickCommand, ObservableCollection<MenuItemViewModel>? childs)
+        public SolidColorBrush Foreground { get; set; }
+
+        public MenuItemViewModel(string header, ICommand clickCommand, ObservableCollection<MenuItemViewModel>? childs, SolidColorBrush foreground)
         {
             Header = header;
             ClickCommand = clickCommand;
+            Foreground = foreground;
             //IObservable<string> headerObservable = this.WhenAnyValue(x => x.Header);
             //headerObservable.Subscribe()
             

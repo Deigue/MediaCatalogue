@@ -12,27 +12,23 @@
           DockPanel.Dock="Top"
           Background="Black"
           IsMainMenu="True">
-        <!-- TODO Convert this to an ItemTemplate of MediaItemViewModel /-->
-        <!-- <ItemsControl.ItemTemplate> -->
-        <!--     <DataTemplate> -->
-        <!--         <local:LoginItemView ViewModel="{Binding}" /> -->
-        <!--     </DataTemplate> -->
-        <!-- </ItemsControl.ItemTemplate> -->
         <Menu.ItemTemplate>
-            <HierarchicalDataTemplate 
-                DataType="vm:MenuItemViewModel" 
+            <HierarchicalDataTemplate
+                DataType="vm:MenuItemViewModel"
                 ItemContainerStyle="{StaticResource MahApps.Styles.MenuItem}"
                 ItemsSource="{Binding Children}">
-                <ContentPresenter Content="{Binding Header}" RecognizesAccessKey="True"/>
-                
+                <ContentPresenter
+                    Content="{Binding Header}"
+                    RecognizesAccessKey="True"/>
             </HierarchicalDataTemplate>
         </Menu.ItemTemplate>
         <Menu.ItemContainerStyle>
-            <Style TargetType="MenuItem">
+            <Style TargetType="MenuItem" d:DataContext="{d:DesignInstance vm:MenuItemViewModel}">
+        
                 <!-- <Setter Property="Header" Value="{Binding Header}" /> -->
+                <Setter Property="Foreground" Value="{Binding Foreground}" />
                 <Setter Property="MinWidth" Value="50" />
                 <Setter Property="HorizontalAlignment" Value="Center" />
-                <!-- <Setter Property="Command" Value="{Binding ClickCommand}" /> -->
             </Style>
         </Menu.ItemContainerStyle>
     </Menu>

@@ -1,5 +1,6 @@
 ﻿using MediaCatalogue.Components;
 using System.Collections.ObjectModel;
+using System.Windows.Media;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using ReactiveUI;
 
@@ -37,9 +38,11 @@ namespace MediaCatalogue.ViewModels
                 saveDialog.ShowDialog();
             });
 
-            var fileMenu = new MenuItemViewModel("_File", newFile, null);
+            var fileMenu = new MenuItemViewModel("_File", newFile, null, new SolidColorBrush(Colors.Red));
             menuItems.Add(fileMenu);
-            menuItems.Add(new MenuItemViewModel("_Settings",newFile, new ObservableCollection<MenuItemViewModel>(){fileMenu}));
+            menuItems.Add(new MenuItemViewModel("_Settings", newFile,
+                new ObservableCollection<MenuItemViewModel>(){fileMenu, fileMenu},
+                new SolidColorBrush(Colors.DimGray)));
 
             return menuItems;
         }

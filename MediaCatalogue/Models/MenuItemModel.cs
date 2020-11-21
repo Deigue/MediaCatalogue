@@ -1,33 +1,34 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Forms;
+using System.Windows.Media;
 using DynamicData.Binding;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
 namespace MediaCatalogue.Models
 {
-    public class MenuItemModel : ReactiveObject
+    public class MenuItemModel
     {
-        [Reactive] public string Header { get; set; }
-        [Reactive] public string ToolTip { get; set; }
-        [Reactive] public ObservableCollection<MenuItemModel>? Children { get; set; }
-        [Reactive] public bool ReadOnly { get; set; }
-
-        public MenuItemModel(string header, string toolTip, bool readOnly)
+        public string Header { get; set; }
+        public bool IsEnabled { get; set; } = true;
+        public SolidColorBrush? Foreground { get; set; } = default;
+        public SolidColorBrush? Background { get; set; } = default;
+        public string? ToolTip { get; set; } = null;
+        public ObservableCollection<MenuItemModel>? Children { get; set; }
+        
+        public MenuItemModel(string header)
         {
             Header = header;
-            ToolTip = toolTip;
-            ReadOnly = readOnly;
             Children = new ObservableCollection<MenuItemModel>();
         }
 
-        public MenuItemModel(string header, string toolTip, bool readOnly, ObservableCollection<MenuItemModel> children)
+        public MenuItemModel(string header, string toolTip, ObservableCollection<MenuItemModel> children, bool isEnabled)
         {
             Header = header;
             ToolTip = toolTip;
-            ReadOnly = readOnly;
             Children = children;
+            IsEnabled = isEnabled;
         }
     }
 }

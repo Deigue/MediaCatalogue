@@ -1,5 +1,6 @@
 ﻿using System.Reactive.Disposables;
 using System.Reactive.Linq;
+using System.Windows.Forms;
 using MediaCatalogue.ViewModels;
 using ReactiveUI;
 using MediaCatalogue.Components;
@@ -24,6 +25,7 @@ namespace MediaCatalogue.Views
                     .ObserveOn(RxApp.MainThreadScheduler)
                     .BindTo(this, view => view.MediaMenu.ItemsSource)
                     .DisposeWith(disposable);
+                
             });
         }
     }
