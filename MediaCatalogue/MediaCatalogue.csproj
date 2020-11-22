@@ -127,6 +127,9 @@
     </ApplicationDefinition>
     <Compile Include="Components\RxUserControl.cs" />
     <Compile Include="Components\ViewModel.cs" />
+    <Compile Include="Interfaces\IMenuItem.cs" />
+    <Compile Include="Interfaces\IMenuItemBuilder.cs" />
+    <Compile Include="Models\Builders\NewMenuItemBuilder.cs" />
     <Compile Include="Models\MenuItemModel.cs" />
     <Compile Include="ViewModels\Common\FilePickerViewModel.cs" />
     <Compile Include="ViewModels\MediaDataViewModel.cs" />
