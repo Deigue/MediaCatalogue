@@ -1,5 +1,7 @@
-﻿using MediaCatalogue.Components;
+﻿using System;
+using MediaCatalogue.Components;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Windows.Media;
 using MediaCatalogue.Models;
 using Microsoft.WindowsAPICodePack.Dialogs;
@@ -19,6 +21,8 @@ namespace MediaCatalogue.ViewModels
             
             // TODO: Link MenuItemModel to this ViewModel, and leverage those observable properties directly.
             MenuItems = SetupMenuItems();
+
+            Debug.WriteLine("setup menu items done");
         }
 
         private ObservableCollection<MenuItemViewModel> SetupMenuItems()
@@ -33,11 +37,38 @@ namespace MediaCatalogue.ViewModels
             });
             */
 
-
+            
             var newFile = ReactiveCommand.Create(() =>
             {
-                var saveDialog = new CommonSaveFileDialog();
-                saveDialog.ShowDialog();
+                var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                var saveDialog = new CommonSaveFileDialog()
+                {
+                    Title = "Create Media Database File",
+                    ShowHiddenItems = false,
+                    AddToMostRecentlyUsedList = false,
+                    ShowPlacesList = true,
+                    CreatePrompt = false,
+                    DefaultExtension = ".db",
+                    DefaultFileName = "MediaCatalogue",
+                    DefaultDirectory = documentsPath
+                };
+                try
+                {
+                    Console.WriteLine("About to open file dialog");
+                    if (saveDialog.ShowDialog() == CommonFileDialogResult.Ok)
+                    {
+                        Console.WriteLine(saveDialog.FileName);
+                        return saveDialog.FileName;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
+
+                return null;
+
             });
 
             var fileMenu = new MenuItemViewModel("_File", newFile, null, new SolidColorBrush(Colors.Red));

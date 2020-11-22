@@ -1,5 +1,8 @@
-﻿using System.Windows.Media;
+﻿using System;
+using System.IO;
+using System.Windows.Media;
 using MediaCatalogue.Interfaces;
+using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace MediaCatalogue.Models.Builders
@@ -36,8 +39,21 @@ namespace MediaCatalogue.Models.Builders
         {
             _newMenuItem.ClickAction = () =>
             {
-                var saveDialog = new CommonSaveFileDialog();
+                var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                var saveDialog = new CommonSaveFileDialog()
+                {
+                    Title = "Create Media Database File",
+                    ShowHiddenItems = false,
+                    AddToMostRecentlyUsedList = false,
+                    ShowPlacesList = true,
+                    CreatePrompt = false,
+                    DefaultExtension = ".db",
+                    DefaultFileName = "MediaCatalogue",
+                    DefaultDirectory = documentsPath
+                };
                 saveDialog.ShowDialog();
+
+                //return saveDialog.FileName;
             };
         }
 
