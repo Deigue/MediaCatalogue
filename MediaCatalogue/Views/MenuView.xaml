@@ -7,7 +7,7 @@
     xmlns:local="clr-namespace:MediaCatalogue.Views"
     xmlns:vm="clr-namespace:MediaCatalogue.ViewModels"
     mc:Ignorable="d"
-    d:DataContext="{d:DesignInstance vm:MenuViewModel}">
+    d:DataContext="{d:DesignInstance vm:MenuViewModel, IsDesignTimeCreatable=False}">
     <Menu Name="MediaMenu"
           DockPanel.Dock="Top"
           Background="Black"
@@ -28,10 +28,13 @@
             </HierarchicalDataTemplate>
         </Menu.ItemTemplate>
         <Menu.ItemContainerStyle>
-            <Style TargetType="MenuItem" d:DataContext="{d:DesignInstance vm:MenuItemViewModel}">
+            <Style TargetType="MenuItem" d:DataContext="{d:DesignInstance vm:MenuItemViewModel, IsDesignTimeCreatable=False}">
 
                 <Setter Property="Foreground" Value="{Binding Foreground}" />
                 <Setter Property="ToolTip" Value="{Binding Header}" />
+                <Setter Property="Background" Value="{Binding Background}"/>
+                <Setter Property="Command" Value="{Binding ClickCommand}"/>
+                <Setter Property="IsEnabled" Value="{Binding IsEnabled}"/>
             </Style>
         </Menu.ItemContainerStyle>
     </Menu>
