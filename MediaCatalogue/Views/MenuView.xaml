@@ -15,20 +15,23 @@
         <Menu.ItemTemplate>
             <HierarchicalDataTemplate
                 DataType="vm:MenuItemViewModel"
-                ItemContainerStyle="{StaticResource MahApps.Styles.MenuItem}"
                 ItemsSource="{Binding Children}">
                 <ContentPresenter
                     Content="{Binding Header}"
-                    RecognizesAccessKey="True"/>
+                    RecognizesAccessKey="True">
+                    <ContentPresenter.Style>
+                        <Style TargetType="ContentPresenter">
+                            <Setter Property="MinWidth" Value="50" />
+                        </Style>
+                    </ContentPresenter.Style>
+                </ContentPresenter>
             </HierarchicalDataTemplate>
         </Menu.ItemTemplate>
         <Menu.ItemContainerStyle>
             <Style TargetType="MenuItem" d:DataContext="{d:DesignInstance vm:MenuItemViewModel}">
-        
-                <!-- <Setter Property="Header" Value="{Binding Header}" /> -->
+
                 <Setter Property="Foreground" Value="{Binding Foreground}" />
-                <Setter Property="MinWidth" Value="50" />
-                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="ToolTip" Value="{Binding Header}" />
             </Style>
         </Menu.ItemContainerStyle>
     </Menu>

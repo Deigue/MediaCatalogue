@@ -42,7 +42,7 @@ namespace MediaCatalogue.ViewModels
             menuItems.Add(fileMenu);
             menuItems.Add(new MenuItemViewModel("_Settings", newFile,
                 new ObservableCollection<MenuItemViewModel>(){fileMenu, fileMenu},
-                new SolidColorBrush(Colors.DimGray)));
+                new SolidColorBrush(Colors.BlueViolet)));
 
             return menuItems;
         }
