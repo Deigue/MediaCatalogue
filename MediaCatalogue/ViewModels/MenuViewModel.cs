@@ -1,8 +1,10 @@
 ﻿using MediaCatalogue.Components;
 using System.Collections.ObjectModel;
 using System.Windows.Media;
+using MediaCatalogue.Models;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using ReactiveUI;
+using ReactiveUI.Fody.Helpers;
 
 namespace MediaCatalogue.ViewModels
 {
