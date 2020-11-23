@@ -1,9 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using MediaCatalogue.Components;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows.Media;
+using MediaCatalogue.Interfaces;
 using MediaCatalogue.Models;
+using MediaCatalogue.Models.Builders;
+using MediaCatalogue.Models.Directors;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
@@ -12,6 +17,7 @@ namespace MediaCatalogue.ViewModels
 {
     public class MenuViewModel : ViewModel
     {
+        private ISet<IMenuItem> MenuItemModels { get; set; } = new SortedSet<IMenuItem>();
         public ObservableCollection<MenuItemViewModel> MenuItems { get; }
         public ViewModel Parent { get; }
 
@@ -27,18 +33,13 @@ namespace MediaCatalogue.ViewModels
 
         private ObservableCollection<MenuItemViewModel> SetupMenuItems()
         {
-            var menuItems = new ObservableCollection<MenuItemViewModel>();
+            var menuDirector = new MenuDirector(new NewMenuItemBuilder());
+            MenuItemModels.Add(menuDirector.GetMenuItem());
+            //var menuItems = new ObservableCollection<MenuItemViewModel>(MenuItemModels.AsEnumerable()
+              //  .Select(menuItemModel => new MenuItemViewModel()
 
-            /*
-            ReactiveCommand<Unit, MessageDialogResult> newFile = ReactiveCommand.CreateFromTask<MessageDialogResult>(() =>
-            {
-                return Application.Current.Windows.OfType<MetroWindow>().First(w => w.IsActive).ShowMessageAsync("New file", "make new file?",
-                    MessageDialogStyle.AffirmativeAndNegative);
-            });
-            */
 
-            
-            var newFile = ReactiveCommand.Create(() =>
+                var newFile = ReactiveCommand.Create(() =>
             {
                 var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 var saveDialog = new CommonSaveFileDialog()
@@ -72,6 +73,8 @@ namespace MediaCatalogue.ViewModels
             });
 
             var fileMenu = new MenuItemViewModel("_File", newFile, null, new SolidColorBrush(Colors.Red));
+
+            ObservableCollection<MenuItemViewModel> menuItems = new ObservableCollection<MenuItemViewModel>();
             menuItems.Add(fileMenu);
             menuItems.Add(new MenuItemViewModel("_Settings", newFile,
                 new ObservableCollection<MenuItemViewModel>(){fileMenu, fileMenu},

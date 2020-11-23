@@ -131,6 +131,7 @@
     <Compile Include="Interfaces\IMenuItem.cs" />
     <Compile Include="Interfaces\IMenuItemBuilder.cs" />
     <Compile Include="Models\Builders\NewMenuItemBuilder.cs" />
+    <Compile Include="Models\Directors\MenuDirector.cs" />
     <Compile Include="Models\MenuItemModel.cs" />
     <Compile Include="ViewModels\Common\FilePickerViewModel.cs" />
     <Compile Include="ViewModels\MediaDataViewModel.cs" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using ReactiveUI;
@@ -8,11 +9,16 @@ namespace MediaCatalogue.Components
 {
     public static class MediaMenuCommand
     {
-        private static readonly Dictionary<string, ICommand> Commands = new Dictionary<string, ICommand>()
-        {
-            {"New", NewFileCommand()}
-        };
+        private static readonly Dictionary<string, ICommand> Commands;
 
+        static MediaMenuCommand()
+        {
+            Commands = new Dictionary<string, ICommand>()
+            {
+                {"New", NewFileCommand()}
+            };
+        }
+        
         /// <summary>
         /// Retrieves the command corresponding to the provided <paramref name="commandKey"/> provided.
         /// </summary>
@@ -39,7 +45,8 @@ namespace MediaCatalogue.Components
                         CreatePrompt = false,
                         DefaultExtension = ".db",
                         DefaultFileName = "MediaCatalogue",
-                        DefaultDirectory = documentsPath
+                        DefaultDirectory = documentsPath,
+                        Filters = { new CommonFileDialogFilter("SQLite Database","*.db")}
                     };
                     try
                     {

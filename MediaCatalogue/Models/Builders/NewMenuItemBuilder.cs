@@ -9,7 +9,11 @@ namespace MediaCatalogue.Models.Builders
 {
     public class NewMenuItemBuilder : IMenuItemBuilder
     {
-        private MenuItemModel _newMenuItem = new MenuItemModel("New");
+        private readonly MenuItemModel _newMenuItem;
+        public NewMenuItemBuilder()
+        {
+            _newMenuItem = new MenuItemModel("_New");
+        }
 
         public void Enable()
         {
@@ -57,7 +61,7 @@ namespace MediaCatalogue.Models.Builders
             };
         }
 
-        public MenuItemModel Build()
+        public IMenuItem Build()
         {
             return _newMenuItem;
         }
