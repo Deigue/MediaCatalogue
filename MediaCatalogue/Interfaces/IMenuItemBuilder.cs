@@ -8,9 +8,7 @@ namespace MediaCatalogue.Interfaces
         void SetToolTip();
         void SetForeground();
         void SetBackground();
-
         void SetupSubMenus();
-        void SetClickAction();
         MenuItemModel Build();
     }
 }

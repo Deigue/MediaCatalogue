@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Windows.Media;
+using ControlzEx.Behaviors;
 
 namespace MediaCatalogue.Interfaces
 {
@@ -11,7 +12,6 @@ namespace MediaCatalogue.Interfaces
         string? ToolTip { get; set; }
         SolidColorBrush? Foreground { get; set; }
         SolidColorBrush? Background { get; set; }
-        Action? ClickAction { get; set; }
         Lazy<ObservableCollection<IMenuItem>>? Children { get; set; }
     }
 }
