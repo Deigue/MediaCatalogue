@@ -33,8 +33,8 @@ namespace MediaCatalogue.ViewModels
 
         private ObservableCollection<MenuItemViewModel> SetupMenuItems()
         {
-            var menuDirector = new MenuDirector(new NewMenuItemBuilder());
-            MenuItemModels.Add(menuDirector.GetMenuItem());
+            MenuItemModels.Add(MenuDirector.MakeWithBuilder(new NewMenuItemBuilder()));
+            
             //var menuItems = new ObservableCollection<MenuItemViewModel>(MenuItemModels.AsEnumerable()
               //  .Select(menuItemModel => new MenuItemViewModel()
 
