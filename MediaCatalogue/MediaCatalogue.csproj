@@ -125,6 +125,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Components\MediaMenuCommand.cs" />
     <Compile Include="Components\RxUserControl.cs" />
     <Compile Include="Components\ViewModel.cs" />
     <Compile Include="Interfaces\IMenuItem.cs" />
