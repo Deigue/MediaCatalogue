@@ -16,25 +16,30 @@ namespace MediaCatalogue.ViewModels
 {
     public class MenuItemViewModel : ViewModel
     {
-        [Reactive]
-        public string Header { get; set; }
+        [Reactive] public IMenuItem MenuItem { get; set; }
+        [Reactive] public string? Header { get; set; }
 
-        public ICommand ClickCommand { get; }
-        
+        public ICommand? ClickCommand { get; }
+
 
         public ObservableCollection<MenuItemViewModel>? Children { get; set; }
 
-        public SolidColorBrush Foreground { get; set; }
+        public SolidColorBrush? Foreground { get; set; }
 
-        public MenuItemViewModel(string header, ICommand clickCommand, ObservableCollection<MenuItemViewModel>? childs, SolidColorBrush foreground)
+        public MenuItemViewModel(string header, ICommand clickCommand, ObservableCollection<MenuItemViewModel>? childs,
+            SolidColorBrush foreground)
         {
             Header = header;
             ClickCommand = clickCommand;
             Foreground = foreground;
+            MenuItem = new MenuItemModel(header);
             
             Children = childs ?? new ObservableCollection<MenuItemViewModel>();
+        }
 
-
+        public MenuItemViewModel(IMenuItem menuItem, ICommand getMenuCommand)
+        {
+            MenuItem = menuItem;
         }
     }
 }

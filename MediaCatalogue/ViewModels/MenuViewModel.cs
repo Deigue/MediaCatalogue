@@ -24,21 +24,23 @@ namespace MediaCatalogue.ViewModels
         public MenuViewModel(ViewModel parent)
         {
             Parent = parent;
-            
+
             // TODO: Link MenuItemModel to this ViewModel, and leverage those observable properties directly.
             MenuItems = SetupMenuItems();
 
-            Debug.WriteLine("setup menu items done");
+            Debug.WriteLine("Setup menu items done!");
         }
 
         private ObservableCollection<MenuItemViewModel> SetupMenuItems()
         {
             MenuItemModels.Add(MenuDirector.MakeWithBuilder(new NewMenuItemBuilder()));
+
+            var menuItems = new ObservableCollection<MenuItemViewModel>(MenuItemModels.AsEnumerable()
+                .Select(menuItemModel =>
+                    new MenuItemViewModel(menuItemModel, MediaMenuCommand.GetMenuCommand(menuItemModel.Header))));
             
-            //var menuItems = new ObservableCollection<MenuItemViewModel>(MenuItemModels.AsEnumerable()
-              //  .Select(menuItemModel => new MenuItemViewModel()
-
-
+            // Short circuit old implementation for new replacement.
+            /*
                 var newFile = ReactiveCommand.Create(() =>
             {
                 var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -69,7 +71,7 @@ namespace MediaCatalogue.ViewModels
                 }
 
                 return null;
-
+            
             });
 
             var fileMenu = new MenuItemViewModel("_File", newFile, null, new SolidColorBrush(Colors.Red));
@@ -79,6 +81,7 @@ namespace MediaCatalogue.ViewModels
             menuItems.Add(new MenuItemViewModel("_Settings", newFile,
                 new ObservableCollection<MenuItemViewModel>(){fileMenu, fileMenu},
                 new SolidColorBrush(Colors.BlueViolet)));
+            */
 
             return menuItems;
         }

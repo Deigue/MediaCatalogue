@@ -17,7 +17,7 @@
                 DataType="vm:MenuItemViewModel"
                 ItemsSource="{Binding Children}">
                 <ContentPresenter
-                    Content="{Binding Header}"
+                    Content="{Binding MenuItem.Header}"
                     RecognizesAccessKey="True">
                     <ContentPresenter.Style>
                         <Style TargetType="ContentPresenter">
@@ -30,11 +30,12 @@
         <Menu.ItemContainerStyle>
             <Style TargetType="MenuItem" d:DataContext="{d:DesignInstance vm:MenuItemViewModel, IsDesignTimeCreatable=False}">
 
-                <Setter Property="Foreground" Value="{Binding Foreground}" />
-                <Setter Property="ToolTip" Value="{Binding Header}" />
-                <Setter Property="Background" Value="{Binding Background}"/>
-                <Setter Property="Command" Value="{Binding ClickCommand}"/>
-                <Setter Property="IsEnabled" Value="{Binding IsEnabled}"/>
+                
+                <!-- <Setter Property="ToolTip" Value="{Binding Header}" /> -->
+                <!-- <Setter Property="Command" Value="{Binding ClickCommand}"/> -->
+                <!-- <Setter Property="Background" Value="{Binding Background}"/> -->
+                <!-- <Setter Property="Foreground" Value="{Binding Foreground}" /> -->
+                <!-- <Setter Property="IsEnabled" Value="{Binding IsEnabled}"/> -->
             </Style>
         </Menu.ItemContainerStyle>
     </Menu>
