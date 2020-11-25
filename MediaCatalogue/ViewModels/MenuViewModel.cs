@@ -4,11 +4,13 @@ using MediaCatalogue.Components;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Windows.Media;
 using MediaCatalogue.Interfaces;
 using MediaCatalogue.Models;
 using MediaCatalogue.Models.Builders;
 using MediaCatalogue.Models.Directors;
+using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
@@ -34,10 +36,27 @@ namespace MediaCatalogue.ViewModels
         private ObservableCollection<MenuItemViewModel> SetupMenuItems()
         {
             MenuItemModels.Add(MenuDirector.MakeWithBuilder(new NewMenuItemBuilder()));
-
+            
+            /*
             var menuItems = new ObservableCollection<MenuItemViewModel>(MenuItemModels.AsEnumerable()
                 .Select(menuItemModel =>
                     new MenuItemViewModel(menuItemModel, MediaMenuCommand.GetMenuCommand(menuItemModel.Header))));
+            */
+
+            var menuItems = new ObservableCollection<MenuItemViewModel>(MenuItemModels.AsEnumerable()
+                .Select(menuItemModel =>
+                {
+                    var command = ReactiveCommand.Create(MediaMenuCommand.NewFileCommand());
+                    command.Subscribe(path =>
+                        {
+                            new OpenFileDialog().ShowDialog();
+                            MediaVm.Path = path;
+                        })
+                        .Dispose();
+                    return new MenuItemViewModel(menuItemModel, command);
+                }));
+                    
+                        
 
             return menuItems;
         }

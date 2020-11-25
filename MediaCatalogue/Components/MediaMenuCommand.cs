@@ -16,7 +16,7 @@ namespace MediaCatalogue.Components
         {
             Commands = new Dictionary<string, ICommand>()
             {
-                {"_New", NewFileCommand()}
+                {"_New", NewFileCommand2()}
             };
         }
         
@@ -30,8 +30,45 @@ namespace MediaCatalogue.Components
             Commands.TryGetValue(commandKey, out var command);
             return command;
         }
+        
 
-        private static ICommand NewFileCommand()
+        public static Func<string> NewFileCommand()
+        {
+            return () =>
+            {
+                var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                var saveDialog = new CommonSaveFileDialog()
+                {
+                    Title = "Create Media Database File",
+                    ShowHiddenItems = false,
+                    AddToMostRecentlyUsedList = false,
+                    ShowPlacesList = true,
+                    CreatePrompt = false,
+                    DefaultExtension = ".db",
+                    DefaultFileName = "MediaCatalogue",
+                    DefaultDirectory = documentsPath,
+                    Filters = {new CommonFileDialogFilter("SQLite Database", "*.db")}
+                };
+                try
+                {
+                    if (saveDialog.ShowDialog() == CommonFileDialogResult.Ok)
+                    {
+                        Console.WriteLine(saveDialog.FileName);
+                        return saveDialog.FileName;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
+
+                return string.Empty;
+            };
+        }
+        
+        
+        private static ICommand NewFileCommand2()
         {
             return ReactiveCommand.Create(
                 execute: () =>
