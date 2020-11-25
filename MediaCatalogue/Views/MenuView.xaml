@@ -11,31 +11,34 @@
     <Menu Name="MediaMenu"
           DockPanel.Dock="Top"
           Background="Black"
-          IsMainMenu="True">
+          IsMainMenu="True"
+          FontFamily="Consolas"
+          FontStyle="Normal"
+          FontSize="16">
         <Menu.ItemTemplate>
             <HierarchicalDataTemplate
                 DataType="vm:MenuItemViewModel"
-                ItemsSource="{Binding Children}">
+                ItemsSource="{Binding MenuItem.Children}">
                 <ContentPresenter
                     Content="{Binding MenuItem.Header}"
                     RecognizesAccessKey="True">
                     <ContentPresenter.Style>
                         <Style TargetType="ContentPresenter">
-                            <Setter Property="MinWidth" Value="50" />
+                            <Setter Property="MinWidth" Value="40" />
+                            <Setter Property="MinHeight" Value="20" />
                         </Style>
                     </ContentPresenter.Style>
                 </ContentPresenter>
             </HierarchicalDataTemplate>
         </Menu.ItemTemplate>
         <Menu.ItemContainerStyle>
-            <Style TargetType="MenuItem" d:DataContext="{d:DesignInstance vm:MenuItemViewModel, IsDesignTimeCreatable=False}">
-
-                
-                <!-- <Setter Property="ToolTip" Value="{Binding Header}" /> -->
-                <!-- <Setter Property="Command" Value="{Binding ClickCommand}"/> -->
-                <!-- <Setter Property="Background" Value="{Binding Background}"/> -->
-                <!-- <Setter Property="Foreground" Value="{Binding Foreground}" /> -->
-                <!-- <Setter Property="IsEnabled" Value="{Binding IsEnabled}"/> -->
+            <Style TargetType="MenuItem"
+                   d:DataContext="{d:DesignInstance vm:MenuItemViewModel, IsDesignTimeCreatable=False}">
+                <Setter Property="Command" Value="{Binding ClickCommand}" />
+                <Setter Property="IsEnabled" Value="{Binding MenuItem.IsEnabled}" />
+                <Setter Property="Background" Value="{Binding MenuItem.Background}" />
+                <Setter Property="Foreground" Value="{Binding MenuItem.Foreground}" />
+                <Setter Property="ToolTip" Value="{Binding MenuItem.ToolTip}" />
             </Style>
         </Menu.ItemContainerStyle>
     </Menu>

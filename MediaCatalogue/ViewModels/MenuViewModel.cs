@@ -38,50 +38,6 @@ namespace MediaCatalogue.ViewModels
             var menuItems = new ObservableCollection<MenuItemViewModel>(MenuItemModels.AsEnumerable()
                 .Select(menuItemModel =>
                     new MenuItemViewModel(menuItemModel, MediaMenuCommand.GetMenuCommand(menuItemModel.Header))));
-            
-            // Short circuit old implementation for new replacement.
-            /*
-                var newFile = ReactiveCommand.Create(() =>
-            {
-                var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                var saveDialog = new CommonSaveFileDialog()
-                {
-                    Title = "Create Media Database File",
-                    ShowHiddenItems = false,
-                    AddToMostRecentlyUsedList = false,
-                    ShowPlacesList = true,
-                    CreatePrompt = false,
-                    DefaultExtension = ".db",
-                    DefaultFileName = "MediaCatalogue",
-                    DefaultDirectory = documentsPath
-                };
-                try
-                {
-                    Console.WriteLine("About to open file dialog");
-                    if (saveDialog.ShowDialog() == CommonFileDialogResult.Ok)
-                    {
-                        Console.WriteLine(saveDialog.FileName);
-                        return saveDialog.FileName;
-                    }
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                    throw;
-                }
-
-                return null;
-            
-            });
-
-            var fileMenu = new MenuItemViewModel("_File", newFile, null, new SolidColorBrush(Colors.Red));
-
-            ObservableCollection<MenuItemViewModel> menuItems = new ObservableCollection<MenuItemViewModel>();
-            menuItems.Add(fileMenu);
-            menuItems.Add(new MenuItemViewModel("_Settings", newFile,
-                new ObservableCollection<MenuItemViewModel>(){fileMenu, fileMenu},
-                new SolidColorBrush(Colors.BlueViolet)));
-            */
 
             return menuItems;
         }

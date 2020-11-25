@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using ReactiveUI;
@@ -15,7 +14,7 @@ namespace MediaCatalogue.Components
         {
             Commands = new Dictionary<string, ICommand>()
             {
-                {"New", NewFileCommand()}
+                {"_New", NewFileCommand()}
             };
         }
         

@@ -10,6 +10,7 @@ namespace MediaCatalogue.Models.Builders
     public class NewMenuItemBuilder : IMenuItemBuilder
     {
         private readonly MenuItemModel _newMenuItem;
+
         public NewMenuItemBuilder()
         {
             _newMenuItem = new MenuItemModel("_New");
@@ -37,28 +38,6 @@ namespace MediaCatalogue.Models.Builders
 
         public void SetupSubMenus()
         {
-        }
-
-        public void SetClickAction()
-        {
-            _newMenuItem.ClickAction = () =>
-            {
-                var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                var saveDialog = new CommonSaveFileDialog()
-                {
-                    Title = "Create Media Database File",
-                    ShowHiddenItems = false,
-                    AddToMostRecentlyUsedList = false,
-                    ShowPlacesList = true,
-                    CreatePrompt = false,
-                    DefaultExtension = ".db",
-                    DefaultFileName = "MediaCatalogue",
-                    DefaultDirectory = documentsPath
-                };
-                saveDialog.ShowDialog();
-
-                //return saveDialog.FileName;
-            };
         }
 
         public IMenuItem Build()
