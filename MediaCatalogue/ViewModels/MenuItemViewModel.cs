@@ -1,4 +1,4 @@
-﻿using MediaCatalogue.Components;
+using MediaCatalogue.Components;
 using ReactiveUI.Fody.Helpers;
 using System.Windows.Input;
 using MediaCatalogue.Interfaces;

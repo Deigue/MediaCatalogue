@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 using Microsoft.WindowsAPICodePack.Dialogs;
@@ -6,6 +6,8 @@ using ReactiveUI;
 
 namespace MediaCatalogue.Components
 {
+    // TODO: This needs to be reworked as a func/delegate sender. The ReactiveCommand must be created in VM so we can
+    // subscribe to it and reflect the changes to parent over there.
     public static class MediaMenuCommand
     {
         private static readonly Dictionary<string, ICommand> Commands;
@@ -63,6 +65,12 @@ namespace MediaCatalogue.Components
 
                     return null;
                 });
+        }
+
+        private static IReactiveCommand? OpenFileCommand()
+        {
+            // TODO: Implement OpenFileDialog picker here.
+            return default;
         }
     }
 }

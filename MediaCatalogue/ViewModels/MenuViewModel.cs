@@ -19,11 +19,11 @@ namespace MediaCatalogue.ViewModels
     {
         private ISet<IMenuItem> MenuItemModels { get; set; } = new SortedSet<IMenuItem>();
         public ObservableCollection<MenuItemViewModel> MenuItems { get; }
-        public ViewModel Parent { get; }
+        public MediaDataViewModel MediaVm { get; }
 
-        public MenuViewModel(ViewModel parent)
+        public MenuViewModel(MediaDataViewModel mediaVm)
         {
-            Parent = parent;
+            MediaVm = mediaVm;
 
             // TODO: Link MenuItemModel to this ViewModel, and leverage those observable properties directly.
             MenuItems = SetupMenuItems();
