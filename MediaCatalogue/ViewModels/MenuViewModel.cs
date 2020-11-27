@@ -37,13 +37,13 @@ namespace MediaCatalogue.ViewModels
         {
             MenuItemModels.Add(MenuDirector.MakeWithBuilder(new NewMenuItemBuilder()));
             
-            /* try 1
+            // try 1
             var menuItems = new ObservableCollection<MenuItemViewModel>(MenuItemModels.AsEnumerable()
                 .Select(menuItemModel =>
-                    new MenuItemViewModel(menuItemModel, MediaMenuCommand.GetMenuCommand(menuItemModel.Header))));
-            */
+                    new MenuItemViewModel(menuItemModel, this.GetMenuCommand(menuItemModel.Header))));
             
             // try 2
+            /*
             var menuItems = new ObservableCollection<MenuItemViewModel>(MenuItemModels.AsEnumerable()
                 .Select(menuItemModel =>
                 {
@@ -55,7 +55,7 @@ namespace MediaCatalogue.ViewModels
                         });
                     return new MenuItemViewModel(menuItemModel, command);
                 }));
-            
+            */
             
             // try 3
             /*

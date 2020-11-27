@@ -35,6 +35,11 @@
             <Style TargetType="MenuItem"
                    d:DataContext="{d:DesignInstance vm:MenuItemViewModel, IsDesignTimeCreatable=False}">
                 <Setter Property="Command" Value="{Binding ClickCommand}" />
+                <Setter Property="CommandParameter"
+                        Value="{Binding
+                            RelativeSource={RelativeSource Mode=FindAncestor,
+                                AncestorType={x:Type local:MenuView}},
+                                Path=DataContext}" />
                 <Setter Property="IsEnabled" Value="{Binding MenuItem.IsEnabled}" />
                 <Setter Property="Background" Value="{Binding MenuItem.Background}" />
                 <Setter Property="Foreground" Value="{Binding MenuItem.Foreground}" />
