@@ -37,24 +37,64 @@ namespace MediaCatalogue.ViewModels
         {
             MenuItemModels.Add(MenuDirector.MakeWithBuilder(new NewMenuItemBuilder()));
             
-            /*
+            /* try 1
             var menuItems = new ObservableCollection<MenuItemViewModel>(MenuItemModels.AsEnumerable()
                 .Select(menuItemModel =>
                     new MenuItemViewModel(menuItemModel, MediaMenuCommand.GetMenuCommand(menuItemModel.Header))));
             */
-
+            
+            // try 2
             var menuItems = new ObservableCollection<MenuItemViewModel>(MenuItemModels.AsEnumerable()
                 .Select(menuItemModel =>
                 {
                     var command = ReactiveCommand.Create(MediaMenuCommand.NewFileCommand());
-                    command.Subscribe(path =>
+                    command.ObserveOn(RxApp.MainThreadScheduler)
+                        .Subscribe(path =>
                         {
-                            new OpenFileDialog().ShowDialog();
                             MediaVm.Path = path;
-                        })
-                        .Dispose();
+                        });
                     return new MenuItemViewModel(menuItemModel, command);
                 }));
+            
+            
+            // try 3
+            /*
+            var menuItems = new ObservableCollection<MenuItemViewModel>(MenuItemModels.AsEnumerable()
+                .Select(menuItemModel =>
+                {
+                    var command = ReactiveCommand.Create(() =>
+                    {
+                        var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                        var saveDialog = new CommonSaveFileDialog()
+                        {
+                            Title = "Create Media Database File",
+                            ShowHiddenItems = false,
+                            AddToMostRecentlyUsedList = false,
+                            ShowPlacesList = true,
+                            CreatePrompt = false,
+                            DefaultExtension = ".db",
+                            DefaultFileName = "MediaCatalogue",
+                            DefaultDirectory = documentsPath,
+                            Filters = {new CommonFileDialogFilter("SQLite Database", "*.db")}
+                        };
+                        try
+                        {
+                            if (saveDialog.ShowDialog() == CommonFileDialogResult.Ok)
+                            {
+                                Console.WriteLine(saveDialog.FileName);
+                                MediaVm.Path = saveDialog.FileName;
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e);
+                            throw;
+                        }
+                    });
+                    return new MenuItemViewModel(menuItemModel, command);
+                }));
+            */
+            
                     
                         
 
