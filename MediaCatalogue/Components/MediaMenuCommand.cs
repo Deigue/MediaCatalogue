@@ -17,62 +17,26 @@ namespace MediaCatalogue.Components
         {
             Commands = new Dictionary<string, ICommand>()
             {
-                {"_New", NewFileCommand2()}
+                {"_New", NewFileCommand()}
             };
         }
 
         /// <summary>
         /// Retrieves the command corresponding to the provided <paramref name="commandKey"/> provided.
         /// </summary>
+        /// <param name="viewModel">Source MenuViewModel from which Command is being obtained from.</param>
         /// <param name="commandKey">Header of the Media Menu Item.</param>
         /// <returns>Command for the Media Menu Item queried.</returns>
         public static ICommand GetMenuCommand<TViewModel>(
             this TViewModel viewModel,
             string commandKey)
-        where TViewModel : MenuViewModel
+            where TViewModel : MenuViewModel
         {
             Commands.TryGetValue(commandKey, out var command);
             return command;
         }
 
-
-        public static Func<string> NewFileCommand()
-        {
-            return () =>
-            {
-                var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                var saveDialog = new CommonSaveFileDialog()
-                {
-                    Title = "Create Media Database File",
-                    ShowHiddenItems = false,
-                    AddToMostRecentlyUsedList = false,
-                    ShowPlacesList = true,
-                    CreatePrompt = false,
-                    DefaultExtension = ".db",
-                    DefaultFileName = "MediaCatalogue",
-                    DefaultDirectory = documentsPath,
-                    Filters = {new CommonFileDialogFilter("SQLite Database", "*.db")}
-                };
-                try
-                {
-                    if (saveDialog.ShowDialog() == CommonFileDialogResult.Ok)
-                    {
-                        Console.WriteLine(saveDialog.FileName);
-                        return saveDialog.FileName;
-                    }
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                    throw;
-                }
-
-                return string.Empty;
-            };
-        }
-
-
-        private static ICommand NewFileCommand2()
+        private static ICommand NewFileCommand()
         {
             return ReactiveCommand.Create<MenuViewModel?>(
                 execute: (vm) =>
@@ -88,9 +52,9 @@ namespace MediaCatalogue.Components
                         DefaultExtension = ".db",
                         DefaultFileName = "MediaCatalogue",
                         DefaultDirectory = documentsPath,
-                        Filters = {new CommonFileDialogFilter("SQLite Database", "*.db")}
+                        Filters = {new CommonFileDialogFilter("SQLite Database", "*.db,*.sqlite")}
                     };
-                    
+
                     try
                     {
                         if (saveDialog.ShowDialog() != CommonFileDialogResult.Ok) return;
