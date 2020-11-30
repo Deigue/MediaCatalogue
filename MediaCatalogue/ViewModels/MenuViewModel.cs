@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using MediaCatalogue.Components;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Reactive.Disposables;
-using System.Reactive.Linq;
-using System.Windows.Media;
+using DynamicData;
 using MediaCatalogue.Interfaces;
-using MediaCatalogue.Models;
 using MediaCatalogue.Models.Builders;
 using MediaCatalogue.Models.Directors;
-using Microsoft.Win32;
-using Microsoft.WindowsAPICodePack.Dialogs;
-using ReactiveUI;
-using ReactiveUI.Fody.Helpers;
 
 namespace MediaCatalogue.ViewModels
 {
@@ -27,23 +20,30 @@ namespace MediaCatalogue.ViewModels
         public MenuViewModel(MediaDataViewModel mediaVm)
         {
             MediaVm = mediaVm;
-
-            // TODO: Link MenuItemModel to this ViewModel, and leverage those observable properties directly.
             MenuItems = SetupMenuItems();
 
+            // TODO: Replace with SeriLog affirmation here.
             Debug.WriteLine("Setup menu items done!");
         }
 
         private ObservableCollection<MenuItemViewModel> SetupMenuItems()
         {
-            MenuItemModels.Add(MenuDirector.MakeWithBuilder(new NewMenuItemBuilder()));
+            MenuItemModels.Add(MenuDirector.MakeWithBuilder(new FileMenuItemBuilder()));
 
             var menuItems = new ObservableCollection<MenuItemViewModel>(MenuItemModels.AsEnumerable()
-                .Select(menuItemModel =>
-                    new MenuItemViewModel(menuItemModel,
-                        this.GetMenuCommand(menuItemModel.Header).DisposeWith(this.CompositeDisposable))));
+                .Select(ConvertToViewModelRecursively));
             
             return menuItems;
+        }
+
+        private MenuItemViewModel ConvertToViewModelRecursively(IMenuItem menuItemModel)
+        {
+            var menuCommand = this.GetMenuCommand(menuItemModel.Header);
+            var menuItemViewModel = new MenuItemViewModel(menuItemModel, menuCommand);
+            menuItemViewModel.Children.Value.AddRange(menuItemModel.Children.Value
+                .Select(ConvertToViewModelRecursively));
+            menuCommand?.DisposeWith(menuItemViewModel.CompositeDisposable);
+            return menuItemViewModel;
         }
     }
 }

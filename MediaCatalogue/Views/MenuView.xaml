@@ -18,8 +18,8 @@
         <Menu.ItemTemplate>
             <HierarchicalDataTemplate
                 DataType="vm:MenuItemViewModel"
-                ItemsSource="{Binding MenuItem.Children}">
-                <ContentPresenter
+                ItemsSource="{Binding Children.Value}">
+                <ContentPresenter 
                     Content="{Binding MenuItem.Header}"
                     RecognizesAccessKey="True">
                     <ContentPresenter.Style>
