@@ -1,10 +1,11 @@
-﻿using MediaCatalogue.Models;
+﻿using System.ComponentModel;
+using MediaCatalogue.Models;
 
 namespace MediaCatalogue.Interfaces
 {
     public interface IMenuItemBuilder
     {
-        void Enable();
+        void IsEnabled();
         void SetToolTip();
         void SetForeground();
         void SetBackground();

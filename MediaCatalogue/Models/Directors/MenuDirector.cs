@@ -12,21 +12,22 @@ namespace MediaCatalogue.Models.Directors
             director.Construct();
             return director.GetMenuItem();
         }
-        
-        public MenuDirector(IMenuItemBuilder menuItemBuilder)
+
+        private MenuDirector(IMenuItemBuilder menuItemBuilder)
         {
             _builder = menuItemBuilder;
         }
-        public void Construct()
+
+        private void Construct()
         {
-            _builder.Enable();
+            _builder.IsEnabled();
             _builder.SetToolTip();
             _builder.SetForeground();
             _builder.SetBackground();
             _builder.SetupSubMenus();
         }
 
-        public IMenuItem GetMenuItem()
+        private IMenuItem GetMenuItem()
         {
             return _builder.Build();
         }

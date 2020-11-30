@@ -12,6 +12,6 @@ namespace MediaCatalogue.Interfaces
         string? ToolTip { get; set; }
         SolidColorBrush? Foreground { get; set; }
         SolidColorBrush? Background { get; set; }
-        Lazy<ObservableCollection<IMenuItem>>? Children { get; set; }
+        Lazy<ObservableCollection<IMenuItem>> Children { get; }
     }
 }

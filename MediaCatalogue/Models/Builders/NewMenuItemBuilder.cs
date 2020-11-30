@@ -16,7 +16,7 @@ namespace MediaCatalogue.Models.Builders
             _newMenuItem = new MenuItemModel("_New");
         }
 
-        public void Enable()
+        public void IsEnabled()
         {
             _newMenuItem.IsEnabled = true;
         }

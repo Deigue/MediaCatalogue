@@ -3,16 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reactive;
-using System.Windows.Input;
 using MediaCatalogue.ViewModels;
-using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using ReactiveUI;
 
 namespace MediaCatalogue.Components
 {
-    // TODO: This needs to be reworked as a func/delegate sender. The ReactiveCommand must be created in VM so we can
-    // subscribe to it and reflect the changes to parent over there.
     public static class MediaMenuCommand
     {
         private static readonly Dictionary<string, ReactiveCommand<MenuViewModel?, Unit>> Commands;
@@ -31,7 +27,7 @@ namespace MediaCatalogue.Components
         /// <param name="viewModel">Source MenuViewModel from which Command is being obtained from.</param>
         /// <param name="commandKey">Header of the Media Menu Item.</param>
         /// <returns>Command for the Media Menu Item queried.</returns>
-        public static ReactiveCommand<MenuViewModel?, Unit> GetMenuCommand<TViewModel>(
+        public static ReactiveCommand<MenuViewModel?, Unit>? GetMenuCommand<TViewModel>(
             this TViewModel viewModel,
             string commandKey)
             where TViewModel : MenuViewModel
