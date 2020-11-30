@@ -130,6 +130,7 @@
     <Compile Include="Components\ViewModel.cs" />
     <Compile Include="Interfaces\IMenuItem.cs" />
     <Compile Include="Interfaces\IMenuItemBuilder.cs" />
+    <Compile Include="Models\Builders\FileMenuItemBuilder.cs" />
     <Compile Include="Models\Builders\NewMenuItemBuilder.cs" />
     <Compile Include="Models\Directors\MenuDirector.cs" />
     <Compile Include="Models\MenuItemModel.cs" />
