@@ -1,7 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reactive;
 using System.Windows.Input;
 using MediaCatalogue.ViewModels;
+using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using ReactiveUI;
 
@@ -11,11 +15,11 @@ namespace MediaCatalogue.Components
     // subscribe to it and reflect the changes to parent over there.
     public static class MediaMenuCommand
     {
-        private static readonly Dictionary<string, ICommand> Commands;
+        private static readonly Dictionary<string, ReactiveCommand<MenuViewModel?, Unit>> Commands;
 
         static MediaMenuCommand()
         {
-            Commands = new Dictionary<string, ICommand>()
+            Commands = new Dictionary<string, ReactiveCommand<MenuViewModel?, Unit>>()
             {
                 {"_New", NewFileCommand()}
             };
@@ -27,7 +31,7 @@ namespace MediaCatalogue.Components
         /// <param name="viewModel">Source MenuViewModel from which Command is being obtained from.</param>
         /// <param name="commandKey">Header of the Media Menu Item.</param>
         /// <returns>Command for the Media Menu Item queried.</returns>
-        public static ICommand GetMenuCommand<TViewModel>(
+        public static ReactiveCommand<MenuViewModel?, Unit> GetMenuCommand<TViewModel>(
             this TViewModel viewModel,
             string commandKey)
             where TViewModel : MenuViewModel
@@ -36,7 +40,7 @@ namespace MediaCatalogue.Components
             return command;
         }
 
-        private static ICommand NewFileCommand()
+        private static ReactiveCommand<MenuViewModel?, Unit> NewFileCommand()
         {
             return ReactiveCommand.Create<MenuViewModel?>(
                 execute: (vm) =>
@@ -49,8 +53,9 @@ namespace MediaCatalogue.Components
                         AddToMostRecentlyUsedList = false,
                         ShowPlacesList = true,
                         CreatePrompt = false,
-                        DefaultExtension = ".db",
-                        DefaultFileName = "MediaCatalogue",
+                        //DefaultExtension = ".db",
+                        //AlwaysAppendDefaultExtension = false,
+                        DefaultFileName = "MediaCatalogue.db",
                         DefaultDirectory = documentsPath,
                         Filters = {new CommonFileDialogFilter("SQLite Database", "*.db,*.sqlite")}
                     };
@@ -60,12 +65,16 @@ namespace MediaCatalogue.Components
                         if (saveDialog.ShowDialog() != CommonFileDialogResult.Ok) return;
                         // todo: replace with SeriLog.
                         //Console.WriteLine(saveDialog.FileName);
-                        if (vm != null) vm.MediaVm.Path = saveDialog.FileName;
-                        //return saveDialog.FileName;
+                        if (vm == null) return;
+                        if (saveDialog.Filters.Any(filter =>
+                            filter.Extensions.Contains(Path.GetExtension(saveDialog.FileName).TrimStart('.'))))
+                        {
+                            vm.MediaVm.Path = saveDialog.FileName;
+                        }
                     }
                     catch (Exception e)
                     {
-                        // todo: replace with SeriLog.
+                        // TODO: replace with SeriLog.
                         Console.WriteLine(e);
                         throw;
                     }
